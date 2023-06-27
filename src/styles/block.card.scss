@@ -1,0 +1,14 @@
+.card {
+  display: flex;
+  padding: 64px;
+  width: 400px;
+  height: 400px;
+
+  p {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    line-height: 28px;
+    font-weight: 700;
+  }
+}
