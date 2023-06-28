@@ -2,6 +2,7 @@
 
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin"); //  generate html file
+// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // const { CleanWebpackPlugin } = require("clean-webpack-plugin"); // clean bundle directory
 
 const devMode = true;
@@ -13,14 +14,24 @@ module.exports = {
   //   test: path.resolve(__dirname, "./src/test.js"),
   // },
   entry: {
-    main: ["./src/main.js", "./src/test.js"],
+    home: {
+      import: "./src/js/home.js",
+      filename: "js/home.[contenthash].js",
+    },
+    about: {
+      import: "./src/js/about.js",
+      filename: "js/about.[contenthash].js",
+      dependOn: "home",
+    },
   },
   output: {
     filename: "[name].js", // file xuất <- multiple files hoặc đặt tên 1 file như output.js
     // filename: "output.js",
     path: path.resolve(__dirname, "dist"), // thư mục xuất file
-    clean: true, // config của webpack hoặc sử dụng CleanWebpackPlugin
+    clean: true, // config của webpack hoặc sử dụng CleanWebpackPlugin,
+    publicPath: "/",
   },
+
   optimization: {
     splitChunks: {
       chunks: "all",
@@ -28,6 +39,10 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.html$/i,
+        loader: "html-loader",
+      },
       {
         test: /\.(?:js|mjs|cjs)$/,
         exclude: /node_modules/,
@@ -37,6 +52,23 @@ module.exports = {
             presets: [["@babel/preset-env", { targets: "defaults" }]],
           },
         },
+      },
+      {
+        // test: /\.(png|svg|jpg|gif|jpe?g)$/,
+        test: /\.(png|jpe?g|gif)$/,
+        type: "asset/resource",
+        generator: {
+          filename: "assets/[hash][ext]",
+        },
+      },
+      {
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          // MiniCssExtractPlugin.loader,
+          "style-loader",
+          "css-loader",
+          "sass-loader",
+        ],
       },
     ],
   },
@@ -52,7 +84,15 @@ module.exports = {
     // new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: "Webpack Bundle",
-      filename: "index.html",
+      filename: "home.html",
+      template: "./src/templates/home.html",
+      inject: "body",
+    }),
+    new HtmlWebpackPlugin({
+      title: "About",
+      filename: "about.html",
+      template: "./src/templates/about.html",
+      inject: "body",
     }),
   ],
 };
