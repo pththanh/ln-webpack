@@ -1,6 +1,109 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .container {
   position: relative;
   max-width: 1920px;
   margin: 0 auto;
-  background-color: lightblue;
+}
+
+.img-wrapper {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: fill;
+  }
+}
+
+.content-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+}
+
+.content {
+  grid-column: 3/13;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+
+  img {
+    width: 100%;
+  }
+
+  &-title {
+    font-size: 32px;
+    line-height: 44px;
+    font-weight: 700;
+    margin: 40px 0 0;
+  }
+
+  &-info {
+    color: #a3a3a3;
+    margin-top: 20px;
+    font-weight: 400;
+    line-height: 18px;
+
+    span {
+      margin-right: 5px;
+    }
+  }
+
+  &-description {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    margin: 16px 0;
+  }
+
+  &-talents,
+  &-creators {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+  }
+
+  &-label {
+    color: #a3a3a3;
+  }
+
+  &-button {
+    margin: 40px 0 0;
+    display: flex;
+    gap: 20px;
+
+    button {
+      color: white;
+      padding: 12px 20px;
+      min-width: 120px;
+      border-radius: 5px;
+      border: none;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .red {
+      background-color: #e50914;
+    }
+
+    .black {
+      background-color: black;
+    }
+
+    .orange {
+      background-color: rgb(243, 84, 21);
+    }
+  }
 }
