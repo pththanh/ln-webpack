@@ -1,0 +1,10 @@
+@include font-face('LoraRegular', '../fonts/Lora/Lora-Regular', normal, normal);
+@include font-face('LoraMedium', '../fonts/Lora/Lora-Medium', normal, normal);
+@include font-face('LoraSemiBold', '../fonts/Lora/Lora-SemiBold', normal, normal);
+@include font-face('LoraBold', '../fonts/Lora/Lora-Bold', normal, normal);
+
+
+$font-family-regular: 'LoraRegular', arial, sans-serif;
+$font-family-medium:  'LoraMedium', arial, sans-serif;
+$font-family-semi-bold:  'LoraSemiBold', arial, sans-serif;
+$font-family-bold:    'LoraBold',    arial, sans-serif;
