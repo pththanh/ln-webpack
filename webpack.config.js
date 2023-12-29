@@ -97,11 +97,13 @@ module.exports = {
       filename: "home.html",
       template: "./src/templates/home.html",
       inject: "body",
+      chunks: ['home'],
     }),
     new HtmlWebpackPlugin({
       filename: "about.html",
       template: "./src/templates/about.html",
       inject: "body",
+      chunks: ['about'],
     }),
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css"
